@@ -25,7 +25,7 @@ EOF
 mysql -h $HOST $DB --local-infile < $SQL > $XLS
 sed -i 's/\\t/\t/g' $XLS
 
-samples=`awk '{ if (line > 0) print $2; ++line }' $per_otus_xls | sort | uniq`
+samples=`awk '{ if (line > 0) print "O2_" $2; ++line }' $SAMPLE_INFO_SUBSET | sort | uniq`
 for sample in $samples
 do
 	awk -f $0.reshape.awk -v expt="$sample" $per_otus_xls > $0.persistent_otus.reshaped.tab

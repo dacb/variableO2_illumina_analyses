@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JOBS="0.setup 1.quality_filter 2.dereplication 3.abundance_sort 4.cluster 5.chimera 6.number_otus 7.map 8.make_table 9.classify 10.database 11.join_to_RDP_class"
+JOBS="0.setup 1.quality_filter 2.dereplication 3.abundance_sort 4.cluster 5.chimera 6.number_otus 7.map 8.make_table 9.classify 10.database 11.join_to_RDP_class 12.persistent_otus 13.figures"
 
 update_dependent=0
 

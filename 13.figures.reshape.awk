@@ -12,9 +12,7 @@
 		f = fields[fi];
 		select = 0;
 		week = 0;
-		if (f == "sediment.rep.1")
-			select = 1;
-		else {
+		{
 			n = split(f, a, ".");
 			if (a[1] == expt) {
 				select = 1;
