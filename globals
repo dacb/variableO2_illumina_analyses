@@ -1,0 +1,26 @@
+# to be sourced
+
+D5P=~dacb/drive5
+USEARCH=$D5P/usearch7.0.1001_i86linux32
+FQ2FASTQ=$D5P/py/faqual2fastq.py
+FQRELABEL=$D5P/py/fastq_strip_barcode_relabel2.py
+NUMBER=$D5P/py/fasta_number.py
+UC2OTUTAB=$D5P/py/uc2otutab.py
+
+RDPT=~dacb/RDPTools
+CLFRJAR=$RDPT/classifier.jar
+
+HOST=`mysql_host`
+DB=variableO2_illumina_analyses
+
+RUNS="082214MC27Fillumina 070314MC27Fillumina"
+PRIMER=AGRGTTTGATCMTGGCTCAG
+
+TRUNCLEN=492
+MAXEE=0.5
+CLUSTER_IDENT=0.97
+
+SAMPLE_INFO=sample_info.xls
+SAMPLE_INFO_SUBSET=sample_info.subset.xls
+
+OUTPUT_NAME=$DB
