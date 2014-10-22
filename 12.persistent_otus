@@ -1,0 +1,45 @@
+#!/bin/bash
+
+source globals
+
+SQL=$0.sql
+XLS=$0.xls
+
+seq_table=final_otus_sequences
+otu_table=final_otus
+class_table=final_otus_classifications
+
+cat << EOF > $SQL
+SELECT ot.OTUId,
+EOF
+
+#head -1 $IN | awk '{ for (i = 2; i <= NF; ++i) print $i }' | sort -n | awk '{ printf("\t\t%s,\n", $1); }' >> $SQL
+#awk -F'\t' -v otu_table="$otu_table" '{ if (line >= 1) { printf("\t\tROUND((%s / (SELECT SUM(%s) FROM %s)) * 100, 2) AS \"%s.%s\",\n", $1, $1, otu_table, $2, $3); } ++line; }' $SAMPLE_INFO_SUBSET >> $SQL
+awk -F'\t' -v otu_table="$otu_table" '{ if (line >= 1) { printf("\t\t%s AS \"O2_%s.w_%s\",\n", $1, $2, $3); } ++line; }' $SAMPLE_INFO_SUBSET >> $SQL
+
+cat << EOF >> $SQL
+		sequence
+	FROM $otu_table AS ot
+		INNER JOIN $seq_table AS st ON ot.OTUId = st.otu
+	WHERE 0
+EOF
+
+# 1%
+#awk -F'\t' -v otu_table="$otu_table" '{ if (line >= 1) printf("\t\tOR (%s / (SELECT SUM(%s) FROM %s) > 0.01)\n", $1, $1, otu_table); ++line; }' $SAMPLE_INFO_SUBSET >> $SQL
+# 2.5%
+awk -F'\t' -v otu_table="$otu_table" '{ if (line >= 1) printf("\t\tOR (%s / (SELECT SUM(%s) FROM %s) > 0.025)\n", $1, $1, otu_table); ++line; }' $SAMPLE_INFO_SUBSET >> $SQL
+
+cat << EOF >> $SQL
+	GROUP BY ot.OTUId
+	ORDER BY ( 0
+EOF
+
+awk -F'\t' '{ if (line >= 1) { printf("\t\t\t+ %s\n", $1); } ++line; }' $SAMPLE_INFO_SUBSET >> $SQL
+
+cat << EOF >> $SQL
+		) DESC
+;
+EOF
+
+mysql -h $HOST $DB --local-infile < $SQL > $XLS
+sed -i 's/\\t/\t/g' $XLS
