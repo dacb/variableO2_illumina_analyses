@@ -1,5 +1,0 @@
-#!/bin/bash
-
-source globals
-
-R --no-save < $0.R
