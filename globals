@@ -13,12 +13,12 @@ CLFRJAR=$RDPT/classifier.jar
 HOST=`mysql_host`
 DB=variableO2_illumina_analyses
 
-RUNS="082214MC27Fillumina 070314MC27Fillumina"
+RUNS="082214MC27Fillumina 070314MC27Fillumina 100814MC27Fillumina"
 PRIMER=AGRGTTTGATCMTGGCTCAG
 
 TRUNCLEN=492
 MAXEE=0.5
-CLUSTER_IDENT=0.97
+CLUSTER_IDENT=0.95
 
 SAMPLE_INFO=sample_info.xls
 SAMPLE_INFO_SUBSET=sample_info.subset.xls

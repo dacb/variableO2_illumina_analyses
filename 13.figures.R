@@ -10,7 +10,7 @@ library(RColorBrewer)
 library(ggplot2)
 #library(reshape)
 
-columns_to_use <- 29
+columns_to_use <- 30
 
 pdf("./13.figures.heatmap.pdf")
 
