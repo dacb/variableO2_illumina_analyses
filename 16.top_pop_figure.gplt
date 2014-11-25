@@ -1,0 +1,50 @@
+set terminal pdf color solid enhanced
+set output '16.top_pop_figure.pdf'
+#set datatfile separator "\t"
+set border 3 front linetype -1 linewidth 1.000
+set boxwidth 0.8 absolute
+set style fill solid 1.00 noborder
+set grid nopolar
+set grid noxtics nomxtics ytics nomytics noztics nomztics \
+ nox2tics nomx2tics noy2tics nomy2tics nocbtics nomcbtics
+set grid layerdefault   linetype 0 linewidth 1.000,  linetype 0 linewidth 1.000
+set key bmargin center horizontal Left reverse noenhanced autotitles columnhead nobox
+#unset key
+set style histogram rowstacked title  offset character 2, 0.25, 0
+set datafile missing '-'
+set style data histograms
+#set xtics border in scale 0,0 nomirror rotate by -45 offset character 0, 0, 0 autojustify
+set xtics border in scale 0,0 nomirror rotate by -90 offset character 0, 0, 0 autojustify
+set xtics  norangelimit font ",8"
+set xtics   ()
+set ytics border in scale 0,0 mirror norotate  offset character 0, 0, 0 autojustify
+set ztics border in scale 0,0 nomirror norotate  offset character 0, 0, 0 autojustify
+set cbtics border in scale 0,0 mirror norotate  offset character 0, 0, 0 autojustify
+set rtics axis in scale 0,0 nomirror norotate  offset character 0, 0, 0 autojustify
+set xlabel "[O_2] in enrichment" 
+set xlabel  offset character 0, -2, 0 font "" textcolor lt -1 norotate
+set ylabel "Fraction of population"
+set yrange [ 0 : 100 ] noreverse nowriteback
+
+# setup color blind palette
+#set palette model RGB defined (0 "#88CCEE", 1 "#44AA99", 1 "#117733", 2 "#999933", 2 "#DDCC77", 3 "#CC6677", 4 "#882255", 5 "#AA4499", 6 "grey")
+set linetype  1 lc rgb "#88CCEE" lw 1
+set linetype  2 lc rgb "#44AA99" lw 1
+set linetype  3 lc rgb "#117733" lw 1 
+set linetype  4 lc rgb "#999933" lw 1
+set linetype  5 lc rgb "#DDCC77" lw 1
+set linetype  6 lc rgb "#CC6677" lw 1
+set linetype  7 lc rgb "#882255" lw 1
+set linetype  8 lc rgb "#AA4499" lw 1
+set linetype  9 lc rgb "gray80"  lw 1
+set linetype cycle  9
+
+#unset colorbox
+#unset key
+
+plot \
+	newhistogram "15 {/Symbol m}M" lt 2, '15uM.tab' using 2:xtic(1) t col, '' u 3:xtic(1) t col, 4:xtic(1) t col, 5:xtic(1) t col, 6:xtic(1) t col, 7:xtic(1) t col, 8:xtic(1) t col, \
+	newhistogram "45 {/Symbol m}M" lt 2, '45uM.tab' using 2:xtic(1) t col, '' u 3:xtic(1) t col, 4:xtic(1) t col, 5:xtic(1) t col, 6:xtic(1) t col, 7:xtic(1) t col, 8:xtic(1) t col, \
+	newhistogram "75 {/Symbol m}M" lt 2, '75uM.tab' using 2:xtic(1) t col, '' u 3:xtic(1) t col, 4:xtic(1) t col, 5:xtic(1) t col, 6:xtic(1) t col, 7:xtic(1) t col, 8:xtic(1) t col, \
+	newhistogram "150 {/Symbol m}M" lt 2, '150uM.tab' using 2:xtic(1) t col, '' u 3:xtic(1) t col, 4:xtic(1) t col, 5:xtic(1) t col, 6:xtic(1) t col, 7:xtic(1) t col, 8:xtic(1) t col, \
+	newhistogram "225 {/Symbol m}M" lt 2, '225uM.tab' using 2:xtic(1) t col, '' u 3:xtic(1) t col, 4:xtic(1) t col, 5:xtic(1) t col, 6:xtic(1) t col, 7:xtic(1) t col, 8:xtic(1) t col

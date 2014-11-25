@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source globals
+
+DAT=$0.tab
+IN=13.figures.otus_percent.tab 
+
+OTUS="OTU_115 OTU_4 OTU_3 OTU_1 OTU_239 OTU_5 OTU_2"
+
+head -1 $IN | awk '{ printf("OTUid\t%s\n", $0); }' > $DAT
+
+for otu in $OTUS
+do
+	echo $otu
+	awk -F'\t' -v otu="$otu" '{ if ($1 == otu) { print $0; exit } }' $IN >> $DAT
+done
+
+\rm -rf $0.15uM.tab $0.45uM.tab $0.75uM.tab $0.150uM.tab $0.225uM.tab
+awk -F'\t' -f $0.awk $DAT
+
+gnuplot $0.gplt
