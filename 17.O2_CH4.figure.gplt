@@ -23,26 +23,26 @@ set linetype cycle 6
 
 set multiplot layout 1,2;
 set title "(a) O_2";
-set ylabel "O_2 (% v/v)"
+set ylabel "[O_2] mM"
 set key right top
-plot '17.O2_CH4.figure.oxygen.tab' using 1:2:3 lt 1 t '5' w yerrorbars, \
-	'' using 1:4:5 lt 2 t '15' w yerrorbars, \
-	'' using 1:6:7 lt 3 t '25' w yerrorbars, \
-	'' using 1:8:9 lt 4 t '50' w yerrorbars, \
-	'' using 1:10:11 lt 5 t '75' w yerrorbars,\
+plot '17.O2_CH4.figure.oxygen.tab' using 1:2:3 lt 1 t '15' w yerrorbars, \
+	'' using 1:4:5 lt 2 t '45' w yerrorbars, \
+	'' using 1:6:7 lt 3 t '75' w yerrorbars, \
+	'' using 1:8:9 lt 4 t '150' w yerrorbars, \
+	'' using 1:10:11 lt 5 t '225' w yerrorbars,\
 	'' using 1:2:3 lt 1 t '' w l,\
 	'' using 1:4:5 lt 2 t '' w l,\
 	'' using 1:6:7 lt 3 t '' w l,\
 	'' using 1:8:9 lt 4 t '' w l,\
 	'' using 1:10:11 lt 5 t '' w l
 set title "(b) CH_4";
-set ylabel "CH_4 (% v/v)"
+set ylabel "[CH_4] mM"
 set key left bottom
-plot '17.O2_CH4.figure.methane.tab' using 1:2:3 lt 1 t '5' w yerrorbars, \
-	'' using 1:4:5 lt 2 t '15' w yerrorbars, \
-	'' using 1:6:7 lt 3 t '25' w yerrorbars, \
-	'' using 1:8:9 lt 4 t '50' w yerrorbars, \
-	'' using 1:10:11 lt 5 t '75' w yerrorbars,\
+plot '17.O2_CH4.figure.methane.tab' using 1:2:3 lt 1 t '15' w yerrorbars, \
+	'' using 1:4:5 lt 2 t '45' w yerrorbars, \
+	'' using 1:6:7 lt 3 t '75' w yerrorbars, \
+	'' using 1:8:9 lt 4 t '150' w yerrorbars, \
+	'' using 1:10:11 lt 5 t '225' w yerrorbars,\
 	'' using 1:2:3 lt 1 t '' w l,\
 	'' using 1:4:5 lt 2 t '' w l,\
 	'' using 1:6:7 lt 3 t '' w l,\
