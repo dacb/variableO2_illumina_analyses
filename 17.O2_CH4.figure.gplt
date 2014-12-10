@@ -10,15 +10,15 @@ set xtics
 set ytics
 set tics out
 set autoscale  y
-set grid x y lc rgb "gray20" lw 1
+set grid x y lc rgb "gray80" lt 1
 
 # setup color blind palette
-set linetype  1 lc rgb "#E69F00" lw 1 pt 7 ps .3
-set linetype  2 lc rgb "#56B4E9" lw 1 pt 7 ps .3
-set linetype  3 lc rgb "#009E73" lw 1 pt 7 ps .3
-set linetype  4 lc rgb "#F0E442" lw 1 pt 7 ps .3
-set linetype  5 lc rgb "#0072B2" lw 1 pt 7 ps .3
-set linetype  6 lc rgb "gray20"  lw 1 pt 7 ps .3
+set linetype  1 lc rgb "#8c510a" lw 5 pt 1 ps .3
+set linetype  2 lc rgb "#d8b365" lw 5 pt 2 ps .3
+set linetype  3 lc rgb "#c7eae5" lw 5 pt 3 ps .3
+set linetype  4 lc rgb "#5ab4ac" lw 5 pt 4 ps .3
+set linetype  5 lc rgb "#01665e" lw 5 pt 5 ps .3
+set linetype  6 lc rgb "gray"  lw 1 pt 6 ps .3
 set linetype cycle 6
 
 set multiplot layout 1,2;
