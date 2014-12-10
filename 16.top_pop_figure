@@ -18,4 +18,4 @@ done
 \rm -rf $0.15uM.tab $0.45uM.tab $0.75uM.tab $0.150uM.tab $0.225uM.tab
 awk -F'\t' -f $0.awk $DAT
 
-/gscratch/esci/dacb/gnuplot/bin/gnuplot $0.gplt
+gnuplot $0.gplt
