@@ -1,0 +1,51 @@
+set terminal pdf color solid enhanced size 6.5,3
+set output '17.O2_CH4.figure.pdf'
+set datafile separator "\t"
+set style fill solid 1.00 noborder
+set style data lp
+set xlabel "Time (h)" 
+
+
+set xtics
+set ytics
+set tics out
+set autoscale  y
+set grid x y lc rgb "gray20" lw 1
+
+# setup color blind palette
+set linetype  1 lc rgb "#E69F00" lw 1 pt 7 ps .3
+set linetype  2 lc rgb "#56B4E9" lw 1 pt 7 ps .3
+set linetype  3 lc rgb "#009E73" lw 1 pt 7 ps .3
+set linetype  4 lc rgb "#F0E442" lw 1 pt 7 ps .3
+set linetype  5 lc rgb "#0072B2" lw 1 pt 7 ps .3
+set linetype  6 lc rgb "gray20"  lw 1 pt 7 ps .3
+set linetype cycle 6
+
+set multiplot layout 1,2;
+set title "(a) O_2";
+set ylabel "O_2 (% v/v)"
+set key right top
+plot '17.O2_CH4.figure.oxygen.tab' using 1:2:3 lt 1 t '5' w yerrorbars, \
+	'' using 1:4:5 lt 2 t '15' w yerrorbars, \
+	'' using 1:6:7 lt 3 t '25' w yerrorbars, \
+	'' using 1:8:9 lt 4 t '50' w yerrorbars, \
+	'' using 1:10:11 lt 5 t '75' w yerrorbars,\
+	'' using 1:2:3 lt 1 t '' w l,\
+	'' using 1:4:5 lt 2 t '' w l,\
+	'' using 1:6:7 lt 3 t '' w l,\
+	'' using 1:8:9 lt 4 t '' w l,\
+	'' using 1:10:11 lt 5 t '' w l
+set title "(b) CH_4";
+set ylabel "CH_4 (% v/v)"
+set key left bottom
+plot '17.O2_CH4.figure.methane.tab' using 1:2:3 lt 1 t '5' w yerrorbars, \
+	'' using 1:4:5 lt 2 t '15' w yerrorbars, \
+	'' using 1:6:7 lt 3 t '25' w yerrorbars, \
+	'' using 1:8:9 lt 4 t '50' w yerrorbars, \
+	'' using 1:10:11 lt 5 t '75' w yerrorbars,\
+	'' using 1:2:3 lt 1 t '' w l,\
+	'' using 1:4:5 lt 2 t '' w l,\
+	'' using 1:6:7 lt 3 t '' w l,\
+	'' using 1:8:9 lt 4 t '' w l,\
+	'' using 1:10:11 lt 5 t '' w l
+unset multiplot
