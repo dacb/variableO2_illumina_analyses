@@ -29,7 +29,7 @@ df <- data.frame(
 	O2 <- factor(c(5, 5, 15, 15, 25, 25, 50, 50, 75, 75)),
 	alpha <- c(mean(O2_5_10), mean (O2_5_15), mean(O2_15_10), mean(O2_15_15), mean(O2_25_10), mean(O2_25_15),
 			mean(O2_50_10), mean(O2_50_15), mean(O2_75_10), mean(O2_75_15)),
-	week <- factor(c(10, 15, 10, 15, 10, 15, 10, 15, 10, 15)),
+	Week <- factor(c(10, 16, 10, 16, 10, 16, 10, 16, 10, 16)),
 	sd <- c(sd(O2_5_10), sd (O2_5_15), sd(O2_15_10), sd(O2_15_15), sd(O2_25_10), sd(O2_25_15),
 			sd(O2_50_10), sd(O2_50_15), sd(O2_75_10), sd(O2_75_15))
 )
@@ -39,7 +39,7 @@ limits <- aes(ymax = alpha + sd, ymin=alpha - sd)
 
 pdf("15.plot_diversity.pdf")
 
-p <- ggplot(df, aes(colour=week, y=alpha, x=O2))
+p <- ggplot(df, aes(colour=Week, y=alpha, x=O2))
 p + geom_point() + geom_errorbar(limits, width=0.2) + ylab(expression(paste("Shannon-Weaver ", alpha, " diversity")))
 
 dev.off()
